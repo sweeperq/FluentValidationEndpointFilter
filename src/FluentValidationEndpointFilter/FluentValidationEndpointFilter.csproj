@@ -6,6 +6,18 @@
     <Nullable>enable</Nullable>
     <RootNamespace>Kimmel.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
     <AssemblyName>Kimmel.$(MSBuildProjectName)</AssemblyName>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>$(AssemblyName)</PackageId>
+    <Title>Minimal API Fluent Validation Endpoint Filter</Title>
+    <Authors>sweeperq</Authors>
+    <Copyright>©2025 Sam Kimmel</Copyright>
+    <PackageProjectUrl>https://github.com/sweeperq/FluentValidationEndpointFilter</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/sweeperq/FluentValidationEndpointFilter</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>AspNetCore; Minimal API; Validation; </PackageTags>
+    <NeutralLanguage>en</NeutralLanguage>
+    <Description>Filter for simplifying validation when using  .Net Minimal API. Utilizes FluentValidation, IEndpointFilter, and a RouteHandlerBuilder extension method to reduce repetitive validation code on API endpoints.</Description>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,6 +26,13 @@
 
 	<ItemGroup>
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="..\..\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
 	</ItemGroup>
 
 </Project>
