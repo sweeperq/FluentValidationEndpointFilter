@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Kimmel.FluentValidationEndpointFilter;
 
@@ -43,7 +44,8 @@ public class ValidationEndpointFilter<T>(IEnumerable<IValidator<T>> validators) 
         // If there are any errors, return a ValidationProblem (Status 422)
         if (failures.Any())
         {
-            return Results.ValidationProblem(failures.ToDictionary(e => e.PropertyName, e => new[] { e.ErrorMessage }));
+            var details = new ValidationProblemDetails(failures.ToDictionary(e => e.PropertyName, e => new[] { e.ErrorMessage }));
+            return TypedResults.UnprocessableEntity(details);
         }
         
 
